@@ -1,0 +1,86 @@
+@prefix cpan-uri: <http://purl.org/NET/cpan-uri/terms#> .
+@prefix dc:    <http://purl.org/dc/terms/> .
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix doap-changeset: <http://ontologi.es/doap-changeset#> .
+@prefix doap-deps: <http://ontologi.es/doap-deps#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix nfo:   <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dev.perl.org/licenses/>
+	dc:title             "the same terms as the perl 5 programming language system itself".
+
+<http://purl.org/NET/cpan-uri/dist/Dist-Inkt/project>
+	a                    doap:Project;
+	cpan-uri:perl_version_from [
+		a nfo:FileDataObject, nfo:SourceCode;
+		rdfs:label "Dist::Inkt";
+		nfo:fileName "lib/Dist/Inkt.pm";
+		nfo:programmingLanguage "Perl";
+	];
+	cpan-uri:readme_from [
+		a nfo:FileDataObject, nfo:SourceCode;
+		rdfs:label "Dist::Inkt";
+		nfo:fileName "lib/Dist/Inkt.pm";
+		nfo:programmingLanguage "Perl";
+	];
+	cpan-uri:version_from [
+		a nfo:FileDataObject, nfo:SourceCode;
+		rdfs:label "Dist::Inkt";
+		nfo:fileName "lib/Dist/Inkt.pm";
+		nfo:programmingLanguage "Perl";
+	];
+	dc:contributor       <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap-deps:runtime-requirement [ doap-deps:on "CPAN::Meta 0"^^doap-deps:CpanId ], [ doap-deps:on "Data::Dump 0"^^doap-deps:CpanId ], [ doap-deps:on "RDF::Trine 1.000"^^doap-deps:CpanId ], [
+		doap-deps:on "RDF::TrineX::Functions 0"^^doap-deps:CpanId;
+	], [
+		doap-deps:on "RDF::TrineX::Parser::Pretdsl 0"^^doap-deps:CpanId;
+	], [
+		doap-deps:on "RDF::TrineX::Serializer::MockTurtleSoup 0"^^doap-deps:CpanId;
+	], [
+		doap-deps:on "Software::License 0"^^doap-deps:CpanId;
+	], [
+		doap-deps:on "Types::Path::Tiny 0"^^doap-deps:CpanId;
+	], [ doap-deps:on "Types::Standard 0"^^doap-deps:CpanId ], [
+		doap-deps:on "namespace::autoclean 0"^^doap-deps:CpanId;
+	], [ doap-deps:on "perl 5.010001"^^doap-deps:CpanId ], [ doap-deps:on "List::MoreUtils 0"^^doap-deps:CpanId ], [ doap-deps:on "Module::Metadata 0"^^doap-deps:CpanId ], [
+		doap-deps:on "Module::Signature 0"^^doap-deps:CpanId;
+	], [ doap-deps:on "MooX::Struct 0"^^doap-deps:CpanId ], [ doap-deps:on "Moose 2.0800"^^doap-deps:CpanId ], [
+		doap-deps:on "Path::Iterator::Rule 0"^^doap-deps:CpanId;
+	], [ doap-deps:on "Path::Tiny 0"^^doap-deps:CpanId ], [
+		doap-deps:on "RDF::DOAP::ChangeSets 0"^^doap-deps:CpanId;
+	];
+	doap-deps:test-requirement [ doap-deps:on "Test::More 0.96"^^doap-deps:CpanId ];
+	doap:bug-database    <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>;
+	doap:created         "2013-08-07"^^xsd:date;
+	doap:developer       <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:download-page   <https://metacpan.org/release/Dist-Inkt>;
+	doap:homepage        <https://metacpan.org/release/Dist-Inkt>;
+	doap:license         <http://dev.perl.org/licenses/>;
+	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:name            "Dist-Inkt";
+	doap:programming-language "Perl";
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>;
+	doap:repository      [
+		a doap:GitRepository;
+		doap:browse <https://github.com/tobyink/p5-dist-inkt>;
+	];
+	doap:shortdesc       "yet another distribution builder".
+
+<http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>
+	a                    doap:Version;
+	rdfs:label           "Initial release";
+	dc:identifier        "Dist-Inkt-0.001"^^xsd:string;
+	dc:issued            "2013-08-07"^^xsd:date;
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.001.tar.gz>;
+	doap:revision        "0.001"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/person/tobyink>
+	a                    foaf:Person;
+	foaf:mbox            <mailto:tobyink@cpan.org>;
+	foaf:name            "Toby Inkster";
+	foaf:nick            "TOBYINK";
+	foaf:page            <https://metacpan.org/author/TOBYINK>.
+

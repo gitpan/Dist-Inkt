@@ -1,0 +1,57 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.70.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 294505f858f11dd062e9916e3f50d88210a9ef54 CONTRIBUTING
+SHA1 628d5378b0bf377ab6305d302f29f61dd42fc7a0 COPYRIGHT
+SHA1 45e9f2d5a91a78e81745f0b45a0a67abd518b38d CREDITS
+SHA1 ce4caea783276cdb8cdc55ff16e93c31a65d3644 Changes
+SHA1 ec5a7b4f3023f03ebf821b57690758f7e6f3ae2a LICENSE
+SHA1 c5a9fd0dfd2a5cf6b1402c437bb41642c9fd13c8 MANIFEST
+SHA1 11de48efca8262498855dbe464ba2f25d23efd58 META.json
+SHA1 1aa5dbe3deaa693529d4cecb56f2e3d722211649 META.ttl
+SHA1 38ea1c328fb40d0aed72f37ed89a3af841d33e67 META.yml
+SHA1 0d09e085a4443d3a98f7aae42f011846db513506 Makefile.PL
+SHA1 24f209c87bfafa0505fb7f270fe8ea5cfa81c3ae README
+SHA1 87733db7b0bb1da07f65250ed3746472e6e92750 bin/distinkt-dist
+SHA1 ca02c63e94f49d94b46fe19ab88b401ad63a6cf2 dist.ini
+SHA1 cbdfd461f5fa54236a77c4ab625b4ebf3329ef3f lib/Dist/Inkt.pm
+SHA1 378446445acd29a400bfce890b4b67e92afc7275 lib/Dist/Inkt/Profile/TOBYINK.pm
+SHA1 41be87ab0060c9dd421b0a1658d13229715ae807 lib/Dist/Inkt/Role/CopyFiles.pm
+SHA1 ccec6c46a135c73b45793e6584ec8391e430204c lib/Dist/Inkt/Role/CopyStandardDocuments.pm
+SHA1 71687135e411e8f38eb7c7c8abfe57c3545dedb2 lib/Dist/Inkt/Role/MetaProvides.pm
+SHA1 26204bb2627d5758bbb5cc8ba45e912a82b817a8 lib/Dist/Inkt/Role/MetaProvidesScripts.pm
+SHA1 0c2262964b3b4bfcb943e3f28bb621b9d0dab08f lib/Dist/Inkt/Role/ProcessDOAP.pm
+SHA1 0ab204f48afc16b519a33de0441da33d9fc5fbaa lib/Dist/Inkt/Role/ProcessDOAPDeps.pm
+SHA1 77c74a5d0c993a3282fe734cb044925f0a0c9568 lib/Dist/Inkt/Role/RDFModel.pm
+SHA1 b25b160dcfd178ddb41680c48373b44b8775c90c lib/Dist/Inkt/Role/ReadMetaDir.pm
+SHA1 0f21246f2b61e5b1769279951eb5b735d0050eac lib/Dist/Inkt/Role/SignDistribution.pm
+SHA1 7657ed2077100d2b5d65b8fce4cdc173e3320cfd lib/Dist/Inkt/Role/WriteCOPYRIGHT.pm
+SHA1 c07b99d5b7b55a2ed8f87dbeaf2a262eefc941db lib/Dist/Inkt/Role/WriteCREDITS.pm
+SHA1 8612d3b4c4af63e2d73a19060aa5fcdf3da10273 lib/Dist/Inkt/Role/WriteChanges.pm
+SHA1 8a24e0fb16f83d3b57ea329c164681bba14ec2e8 lib/Dist/Inkt/Role/WriteLICENSE.pm
+SHA1 c971598ef37423513ba0ea31e185afc6713ead59 lib/Dist/Inkt/Role/WriteMakefilePL.pm
+SHA1 3869018344aa21e6c883ecbb47dd54c33482cf09 lib/Dist/Inkt/Role/WriteMetaJSON.pm
+SHA1 92b973aa8d6d774ae69bb359414ab331427383af lib/Dist/Inkt/Role/WriteMetaTTL.pm
+SHA1 0e86f138834a42096b6c9296bb2751a1b8e2cfc2 lib/Dist/Inkt/Role/WriteMetaYML.pm
+SHA1 b8d72d1e4b6c13b978d58e0f98a0c50ef54476bc lib/Dist/Inkt/Role/WriteREADME.pm
+SHA1 70cfda8dedef237f2ac1ba42bd929dd1c5e29a4e t/01basic.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iEYEARECAAYFAlIFXHIACgkQzr+BKGoqfTkILwCdF3+nBXnYBA/4T4hkXtanSGWu
+lgMAnRWAH2KFME2bcKqsOf8jGQpzF4n1
+=vau2
+-----END PGP SIGNATURE-----
