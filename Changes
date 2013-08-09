@@ -6,6 +6,11 @@ Home page:    <https://metacpan.org/release/Dist-Inkt>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
 
-0.001  2013-08-07  Initial release
+0.002  2013-08-09
+
+ - Add shebang to `bin/distinkt-dist`.
+ - Avoid creating empty 'x_contributors' keys in META.json/META.yml.
+
+0.001  2013-08-09  Initial release
 
 

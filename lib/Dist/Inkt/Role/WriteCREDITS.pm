@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteCREDITS;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.001';
+our $VERSION   = '0.002';
 
 use Moose::Role;
 use RDF::Trine qw( iri literal statement variable );
@@ -20,6 +20,8 @@ after PopulateMetadata => sub {
 		map $_->{display},
 		grep $_->{role} eq 'contributor',
 		@{ $self->people };
+	delete($self->metadata->{x_contributors})
+		unless @{ $self->metadata->{x_contributors} || [] };
 };
 
 after BUILD => sub {
