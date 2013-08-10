@@ -6,6 +6,15 @@ Home page:    <https://metacpan.org/release/Dist-Inkt>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
 
+0.004  2013-08-10
+
+ - Attempt to support ExtUtils::MakeMaker 6.17. Don't pass WriteMakefile a
+   LICENSE unless EUMM >= 6.3001; don't pass it a DISTVNAME at all.
+ - For ExtUtils::MakeMaker versions that don't support BUILD_REQUIRES,
+   bundle it in with PREREQ_PM, not CONFIGURE_REQUIRES.
+ - For ExtUtils::MakeMaker versions that don't support TEST_REQUIRES,
+   bundle it in with BUILD_REQUIRES, not CONFIGURE_REQUIRES.
+
 0.003  2013-08-10
 
  - Don't pass ExtUtils::MakeMaker the AUTHOR as an arrayref unless its

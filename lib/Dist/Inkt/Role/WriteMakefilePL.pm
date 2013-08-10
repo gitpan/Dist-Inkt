@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMakefilePL;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.003';
+our $VERSION   = '0.004';
 
 use Moose::Role;
 use Types::Standard -types;
@@ -25,7 +25,7 @@ sub _build_has_shared_files
 
 after PopulateMetadata => sub {
 	my $self = shift;
-	$self->metadata->{prereqs}{configure}{requires}{'ExtUtils::MakeMaker'} = '6.31'
+	$self->metadata->{prereqs}{configure}{requires}{'ExtUtils::MakeMaker'} = '6.17'
 		if !defined $self->metadata->{prereqs}{configure}{requires}{'ExtUtils::MakeMaker'};
 	$self->metadata->{prereqs}{configure}{requires}{'File::ShareDir::Install'} = '0.02'
 		if $self->has_shared_files
@@ -75,7 +75,7 @@ sub Build_MakefilePL
 
 __DATA__
 use strict;
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.17;
 
 my $EUMM = 'ExtUtils::MakeMaker'->VERSION;
 
@@ -87,13 +87,13 @@ my %WriteMakefileArgs = (
 	ABSTRACT           => $meta->{abstract},
 	AUTHOR             => ($EUMM >= 6.5702 ? $meta->{author} : $meta->{author}[0]),
 	DISTNAME           => $meta->{name},
-	DISTVNAME          => sprintf('%s-%s', $meta->{name}, $meta->{version}),
-	EXE_FILES          => [ map $_->{file}, values %{ $meta->{x_provides_scripts} || {} } ],
-	LICENSE            => $meta->{license}[0],
-	NAME               => do { my $n = $meta->{name}; $n =~ s/-/::/g; $n },
 	VERSION            => $meta->{version},
+	EXE_FILES          => [ map $_->{file}, values %{ $meta->{x_provides_scripts} || {} } ],
+	NAME               => do { my $n = $meta->{name}; $n =~ s/-/::/g; $n },
 	%dynamic_config,
 );
+
+$WriteMakefileArgs{LICENSE} => $meta->{license}[0] if $EUMM >= 6.3001;
 
 sub deps
 {
@@ -119,14 +119,14 @@ if ($EUMM >= 6.6303)
 }
 elsif ($EUMM >= 6.5503)
 {
-	$WriteMakefileArgs{BUILD_REQUIRES}     ||= deps('build');
-	$WriteMakefileArgs{CONFIGURE_REQUIRES} ||= deps('configure', 'test');
+	$WriteMakefileArgs{BUILD_REQUIRES}     ||= deps('build', 'test');
+	$WriteMakefileArgs{CONFIGURE_REQUIRES} ||= deps('configure');
 	$WriteMakefileArgs{PREREQ_PM}          ||= deps('runtime');	
 }
 elsif ($EUMM >= 6.52)
 {
-	$WriteMakefileArgs{CONFIGURE_REQUIRES} ||= deps('configure', 'build', 'test');
-	$WriteMakefileArgs{PREREQ_PM}          ||= deps('runtime');	
+	$WriteMakefileArgs{CONFIGURE_REQUIRES} ||= deps('configure');
+	$WriteMakefileArgs{PREREQ_PM}          ||= deps('runtime', 'build', 'test');	
 }
 else
 {
