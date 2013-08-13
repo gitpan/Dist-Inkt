@@ -4,27 +4,35 @@ Dist-Inkt
 Created:      2013-08-07
 Home page:    <https://metacpan.org/release/Dist-Inkt>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
-Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
+Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
+Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
-0.004  2013-08-10
+0.005	2013-08-13
 
- - Attempt to support ExtUtils::MakeMaker 6.17. Don't pass WriteMakefile a
-   LICENSE unless EUMM >= 6.3001; don't pass it a DISTVNAME at all.
- - For ExtUtils::MakeMaker versions that don't support BUILD_REQUIRES,
-   bundle it in with PREREQ_PM, not CONFIGURE_REQUIRES.
- - For ExtUtils::MakeMaker versions that don't support TEST_REQUIRES,
-   bundle it in with BUILD_REQUIRES, not CONFIGURE_REQUIRES.
+ - (Addition) Support the `x_help_wanted` key for META.json/META.yml.
+ - (Update) Use the shiny, new RDF::DOAP for a lot of the behind-the-scenes
+   DOAP processing.
 
-0.003  2013-08-10
+0.004	2013-08-10
 
- - Don't pass ExtUtils::MakeMaker the AUTHOR as an arrayref unless its
-   version number >= 6.5702.
+ - (Change) Attempt to support ExtUtils::MakeMaker 6.17. Don't pass
+   WriteMakefile a LICENSE unless EUMM >= 6.3001; don't pass it a DISTVNAME
+   at all.
+ - (Change) For ExtUtils::MakeMaker versions that don't support
+   BUILD_REQUIRES, bundle it in with PREREQ_PM, not CONFIGURE_REQUIRES.
+ - (Change) For ExtUtils::MakeMaker versions that don't support
+   TEST_REQUIRES, bundle it in with BUILD_REQUIRES, not CONFIGURE_REQUIRES.
 
-0.002  2013-08-09
+0.003	2013-08-10
 
- - Add shebang to `bin/distinkt-dist`.
- - Avoid creating empty 'x_contributors' keys in META.json/META.yml.
+ - (Change) Don't pass ExtUtils::MakeMaker the AUTHOR as an arrayref unless
+   its version number >= 6.5702.
 
-0.001  2013-08-09  Initial release
+0.002	2013-08-09
 
+ - (Change) Add shebang to `bin/distinkt-dist`.
+ - (Change) Avoid creating empty 'x_contributors' keys in
+   META.json/META.yml.
+
+0.001	2013-08-09	Initial release
 

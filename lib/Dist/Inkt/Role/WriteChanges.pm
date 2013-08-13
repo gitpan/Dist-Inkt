@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteChanges;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.004';
+our $VERSION   = '0.005';
 
 use Moose::Role;
 use RDF::DOAP::ChangeSets;
@@ -20,9 +20,7 @@ sub Build_Changes
 	my $file = $self->targetfile('Changes');
 	$file->exists and return $self->log('Skipping %s; it already exists', $file);
 	$self->log('Writing %s', $file);
-	
-	my $ch = 'RDF::DOAP::ChangeSets'->new($self->project_uri, $self->model);
-	$ch->to_file($file);
+	$file->spew_utf8($self->doap_project->changelog);
 }
 
 1;

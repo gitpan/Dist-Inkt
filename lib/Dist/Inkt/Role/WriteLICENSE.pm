@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteLICENSE;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.004';
+our $VERSION   = '0.005';
 
 use Moose::Role;
 use Software::LicenseUtils;
@@ -40,9 +40,7 @@ sub Build_LICENSE
 	my $licence = $class->new({
 		year   => [localtime]->[5] + 1900,
 		holder => Moose::Util::english_list(
-			map  { $_->{name} // $_->{nick} }
-			grep { $_->{role} eq 'maintainer' }
-			@{ $self->people }
+			sort map $_->to_string('compact'), $self->doap_project->gather_all_maintainers
 		),
 	});
 	

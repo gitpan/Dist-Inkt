@@ -31,6 +31,7 @@
 		nfo:fileName "lib/Dist/Inkt.pm";
 		nfo:programmingLanguage "Perl";
 	];
+	cpan-uri:x_help_wanted <http://usefulinc.com/ns/doap#documenter>, <http://usefulinc.com/ns/doap#tester>;
 	dc:contributor       <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap-deps:runtime-requirement [ doap-deps:on "CPAN::Meta 0"^^doap-deps:CpanId ], [ doap-deps:on "Data::Dump 0"^^doap-deps:CpanId ], [ doap-deps:on "RDF::Trine 1.000"^^doap-deps:CpanId ], [
 		doap-deps:on "RDF::TrineX::Functions 0"^^doap-deps:CpanId;
@@ -49,10 +50,12 @@
 	], [ doap-deps:on "MooX::Struct 0"^^doap-deps:CpanId ], [ doap-deps:on "Moose 2.0800"^^doap-deps:CpanId ], [
 		doap-deps:on "Path::Iterator::Rule 0"^^doap-deps:CpanId;
 	], [ doap-deps:on "Path::Tiny 0"^^doap-deps:CpanId ], [
-		doap-deps:on "RDF::DOAP::ChangeSets 0"^^doap-deps:CpanId;
+		doap-deps:on "RDF::DOAP::Project 0.005"^^doap-deps:CpanId;
+		doap-deps:since <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>;
 	];
 	doap-deps:test-requirement [ doap-deps:on "Test::More 0.96"^^doap-deps:CpanId ];
 	doap:bug-database    <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>;
+	doap:category        [ rdfs:label "CPAN" ], [ rdfs:label "Perl" ], [ rdfs:label "Package" ], [ rdfs:label "Distribution" ], [ rdfs:label "Release" ];
 	doap:created         "2013-08-07"^^xsd:date;
 	doap:developer       <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:download-page   <https://metacpan.org/release/Dist-Inkt>;
@@ -61,12 +64,13 @@
 	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:name            "Dist-Inkt";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-004>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/tobyink/p5-dist-inkt>;
 	];
-	doap:shortdesc       "yet another distribution builder".
+	doap:shortdesc       "yet another distribution builder";
+	doap:wiki            <https://github.com/tobyink/p5-dist-inkt/wiki>.
 
 <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>
 	a                    doap:Version;
@@ -127,6 +131,23 @@
 	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.004.tar.gz>;
 	doap:revision        "0.004"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>
+	a                    doap:Version;
+	dc:identifier        "Dist-Inkt-0.005"^^xsd:string;
+	dc:issued            "2013-08-13"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Update;
+			rdfs:label "Use the shiny, new RDF::DOAP for a lot of the behind-the-scenes DOAP processing.";
+		], [
+			a doap-changeset:Addition;
+			rdfs:label "Support the `x_help_wanted` key for META.json/META.yml.";
+		];
+	];
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.005.tar.gz>;
+	doap:revision        "0.005"^^xsd:string.
 
 <http://purl.org/NET/cpan-uri/person/tobyink>
 	a                    foaf:Person;
