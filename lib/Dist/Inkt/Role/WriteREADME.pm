@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteREADME;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.005';
+our $VERSION   = '0.006';
 
 use Moose::Role;
 use Pod::Text;
@@ -31,7 +31,12 @@ sub Build_README
 	my $input = $self->lead_module;
 	$input =~ s{::}{/}g;
 	$input = $self->sourcefile("lib/$input.pm");
-	
+
+	# inherit rights from input pod
+	$self->rights_for_generated_files->{'README'} ||= [
+		$self->_determine_rights($input)
+	] if $self->DOES('Dist::Inkt::Role::WriteCOPYRIGHT');
+
 	$pod->parse_from_file("$input", "$file");
 }
 

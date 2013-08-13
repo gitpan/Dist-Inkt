@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMetaTTL;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.005';
+our $VERSION   = '0.006';
 
 use Moose::Role;
 use RDF::TrineX::Functions 'serialize';
@@ -20,6 +20,10 @@ sub Build_MetaTTL
 	my $file = $self->targetfile('META.ttl');
 	$file->exists and return $self->log('Skipping %s; it already exists', $file);
 	$self->log('Writing %s', $file);
+	
+	$self->rights_for_generated_files->{'META.ttl'} ||= [
+		$self->_inherited_rights
+	] if $self->DOES('Dist::Inkt::Role::WriteCOPYRIGHT');
 	
 	my $serializer = eval {
 		require RDF::TrineX::Serializer::MockTurtleSoup;
