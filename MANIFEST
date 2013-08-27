@@ -26,10 +26,10 @@ lib/Dist/Inkt/Role/SignDistribution.pm
 lib/Dist/Inkt/Role/WriteCOPYRIGHT.pm
 lib/Dist/Inkt/Role/WriteCREDITS.pm
 lib/Dist/Inkt/Role/WriteChanges.pm
+lib/Dist/Inkt/Role/WriteDOAP.pm
 lib/Dist/Inkt/Role/WriteLICENSE.pm
 lib/Dist/Inkt/Role/WriteMakefilePL.pm
 lib/Dist/Inkt/Role/WriteMetaJSON.pm
-lib/Dist/Inkt/Role/WriteMetaTTL.pm
 lib/Dist/Inkt/Role/WriteMetaYML.pm
 lib/Dist/Inkt/Role/WriteREADME.pm
 t/01basic.t
