@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::MetaProvidesScripts;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.008';
+our $VERSION   = '0.009';
 
 use Moose::Role;
 use Path::Tiny 'path';
@@ -15,7 +15,7 @@ after PopulateMetadata => sub
 	my $src = $self->sourcefile;
 	
 	### XXX - should filter by manifest_skip
-	my %script = (
+	my %scripts = (
 		map {
 			my $path = path($_);
 			$path->basename => { file => $path->relative($src) };

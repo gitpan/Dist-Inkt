@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMakefilePL;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.008';
+our $VERSION   = '0.009';
 
 use Moose::Role;
 use Types::Standard -types;
@@ -134,7 +134,7 @@ __DATA__
 use strict;
 use ExtUtils::MakeMaker 6.17;
 
-my $EUMM = 'ExtUtils::MakeMaker'->VERSION;
+my $EUMM = eval( $ExtUtils::MakeMaker::VERSION );
 
 my $meta = %%%METADATA%%%;
 
@@ -150,7 +150,7 @@ my %WriteMakefileArgs = (
 	%dynamic_config,
 );
 
-$WriteMakefileArgs{LICENSE} => $meta->{license}[0] if $EUMM >= 6.3001;
+$WriteMakefileArgs{LICENSE} = $meta->{license}[0] if $EUMM >= 6.3001;
 
 sub deps
 {

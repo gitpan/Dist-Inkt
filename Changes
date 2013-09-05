@@ -7,6 +7,15 @@ Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.009	2013-09-06
+
+ [ Bug Fixes ]
+ - Correct %script to %scripts in Dist::Inkt::Role::MetaProvidesScripts.
+ - Make sure EUMM $VERSION gets evaled.
+   Graham Knop++
+ - Replace => with = in assignment in Makefile.PL.
+   Graham Knop++
+
 0.008	2013-09-06
 
  [ Packaging ]
