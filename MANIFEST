@@ -5,13 +5,13 @@ Changes
 LICENSE
 MANIFEST
 META.json
-META.ttl
 META.yml
 Makefile.PL
 README
 SIGNATURE
 bin/distinkt-dist
 dist.ini
+doap.ttl
 lib/Dist/Inkt.pm
 lib/Dist/Inkt/Profile/TOBYINK.pm
 lib/Dist/Inkt/Role/CopyFiles.pm

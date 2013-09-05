@@ -7,40 +7,51 @@ Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.008	2013-09-06
+
+ [ Packaging ]
+ - Depend on a newer version of RDF::DOAP, thus we get more awesome Changes
+   files.
+
+ [ Other ]
+ - Add `x_breaks` key to META.json if appropriate.
+ - Allow `source_for_readme` to be set in Dist::Inkt constructor (and thus
+   in dist.ini).
+ - Don't add `x_provides_scripts` to META.json unless scripts are actually
+   provided.
+ - Perform conflicts checking in Makefile.PL.
+
 0.007	2013-08-27
 
- - (Change) Rename META.ttl -> doap.ttl.
+ - Rename META.ttl -> doap.ttl.
 
 0.006	2013-08-13
 
- - (Change) Guess some copyrights for the COPYRIGHT file.
+ - Guess some copyrights for the COPYRIGHT file.
 
 0.005	2013-08-13
 
- - (Addition) Support the `x_help_wanted` key for META.json/META.yml.
- - (Update) Use the shiny, new RDF::DOAP for a lot of the behind-the-scenes
+ - Added: Support the `x_help_wanted` key for META.json/META.yml.
+ - Updated: Use the shiny, new RDF::DOAP for a lot of the behind-the-scenes
    DOAP processing.
 
 0.004	2013-08-10
 
- - (Change) Attempt to support ExtUtils::MakeMaker 6.17. Don't pass
-   WriteMakefile a LICENSE unless EUMM >= 6.3001; don't pass it a DISTVNAME
-   at all.
- - (Change) For ExtUtils::MakeMaker versions that don't support
-   BUILD_REQUIRES, bundle it in with PREREQ_PM, not CONFIGURE_REQUIRES.
- - (Change) For ExtUtils::MakeMaker versions that don't support
-   TEST_REQUIRES, bundle it in with BUILD_REQUIRES, not CONFIGURE_REQUIRES.
+ - Attempt to support ExtUtils::MakeMaker 6.17. Don't pass WriteMakefile a
+   LICENSE unless EUMM >= 6.3001; don't pass it a DISTVNAME at all.
+ - For ExtUtils::MakeMaker versions that don't support BUILD_REQUIRES,
+   bundle it in with PREREQ_PM, not CONFIGURE_REQUIRES.
+ - For ExtUtils::MakeMaker versions that don't support TEST_REQUIRES,
+   bundle it in with BUILD_REQUIRES, not CONFIGURE_REQUIRES.
 
 0.003	2013-08-10
 
- - (Change) Don't pass ExtUtils::MakeMaker the AUTHOR as an arrayref unless
-   its version number >= 6.5702.
+ - Don't pass ExtUtils::MakeMaker the AUTHOR as an arrayref unless its
+   version number >= 6.5702.
 
 0.002	2013-08-09
 
- - (Change) Add shebang to `bin/distinkt-dist`.
- - (Change) Avoid creating empty 'x_contributors' keys in
-   META.json/META.yml.
+ - Add shebang to `bin/distinkt-dist`.
+ - Avoid creating empty 'x_contributors' keys in META.json/META.yml.
 
 0.001	2013-08-09	Initial release
-

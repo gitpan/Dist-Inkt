@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::ProcessDOAPDeps;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.007';
+our $VERSION   = '0.008';
 
 use Moose::Role;
 use namespace::autoclean;
@@ -47,15 +47,19 @@ sub cpanterms_deps
 	foreach my $term (@terms)
 	{
 		my ($phase, $level) = @{$term_map{$term}};
+		my $Reqs;
+		
 		foreach my $dep ($model->objects($uri, $CPAN->$term))
 		{
+			$Reqs ||= 'CPAN::Meta::Requirements'->from_string_hash($meta->{prereqs}{$phase}{$level} || {});
+			
 			$self->log("WARNING: $term is deprecated in favour of http://ontologi.es/doap-deps#");
 			if ($dep->is_literal)
 			{
-				my ($mod, $ver) = split /\s+/, $dep->literal_value;
+				my ($mod, $ver) = split /\s+/, $dep->literal_value, 2;
 				$ver ||= 0;
 				no warnings;
-				$meta->{prereqs}{$phase}{$level}{$mod} = $ver
+				$meta->{prereqs}{$phase}{$level}->add_string_requirement($mod, $ver)
 					unless $meta->{prereqs}{$phase}{$level}{$mod} > $ver;
 			}
 			else
@@ -63,6 +67,8 @@ sub cpanterms_deps
 				$self->log("WARNING: Dunno what to do with ${dep}... we'll figure something out eventually.");
 			}
 		}
+		
+		$meta->{prereqs}{$phase}{$level} = $Reqs->as_string_hash if $Reqs;
 	}
 }
 
@@ -78,6 +84,8 @@ sub doap_deps
 	{
 		foreach my $level (qw/ requirement recommendation suggestion conflict /)
 		{
+			my $Reqs;
+			
 			my $term = "${phase}-${level}";
 			my $level2 = {
 				requirement    => 'requires',
@@ -88,6 +96,8 @@ sub doap_deps
 			
 			foreach my $dep ( $model->objects($uri, $DEPS->uri($term)) )
 			{
+				$Reqs ||= 'CPAN::Meta::Requirements'->from_string_hash($meta->{prereqs}{$phase}{$level2} || {});
+				
 				if ($dep->is_literal)
 				{
 					$self->log("WARNING: ". $DEPS->$term . " expects a resource, not literal $dep!");
@@ -104,13 +114,19 @@ sub doap_deps
 						next;
 					}
 					
-					my ($mod, $ver) = split /\s+/, $ident->literal_value;
+					my ($mod, $ver) = split /\s+/, $ident->literal_value, 2;
 					$ver ||= 0;
 					no warnings;
-					$meta->{prereqs}{$phase}{$level2}{$mod} = $ver
-						unless $meta->{prereqs}{$phase}{$level2}{$mod} > $ver;
+					$Reqs->add_string_requirement($mod => $ver);
+					
+					if ($phase eq 'runtime' and $level eq 'conflict' and $ver =~ m{\A<= (v?[0-9_.]+)\z})
+					{
+						$meta->{x_breaks}{$mod} = $1;
+					}
 				}
 			}
+			
+			$meta->{prereqs}{$phase}{$level2} = $Reqs->as_string_hash if $Reqs;
 		}
 	}
 }

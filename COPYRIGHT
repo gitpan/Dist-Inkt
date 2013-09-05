@@ -5,11 +5,11 @@ Source: https://metacpan.org/release/Dist-Inkt
 
 Files: Changes
  META.json
- META.ttl
  META.yml
  Makefile.PL
  bin/distinkt-dist
  dist.ini
+ doap.ttl
  lib/Dist/Inkt/Profile/TOBYINK.pm
  lib/Dist/Inkt/Role/CopyFiles.pm
  lib/Dist/Inkt/Role/CopyStandardDocuments.pm

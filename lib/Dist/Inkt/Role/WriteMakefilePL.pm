@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMakefilePL;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.007';
+our $VERSION   = '0.008';
 
 use Moose::Role;
 use Types::Standard -types;
@@ -23,6 +23,23 @@ sub _build_has_shared_files
 	!! $self->sourcefile('share')->is_dir;
 }
 
+has needs_conflict_check_code => (
+	is      => 'ro',
+	isa     => Bool,
+	lazy    => 1,
+	builder => '_build_needs_conflict_check_code',
+);
+
+sub _build_needs_conflict_check_code
+{
+	my $self = shift;
+	!!grep {
+		exists $self->metadata->{prereqs}{$_}
+		and exists $self->metadata->{prereqs}{$_}{conflicts}
+		and !!scalar keys %{ $self->metadata->{prereqs}{$_}{conflicts} }
+	} qw( configure build runtime test develop );
+}
+
 after PopulateMetadata => sub {
 	my $self = shift;
 	$self->metadata->{prereqs}{configure}{requires}{'ExtUtils::MakeMaker'} = '6.17'
@@ -30,6 +47,8 @@ after PopulateMetadata => sub {
 	$self->metadata->{prereqs}{configure}{requires}{'File::ShareDir::Install'} = '0.02'
 		if $self->has_shared_files
 		&& !defined $self->metadata->{prereqs}{configure}{requires}{'File::ShareDir::Install'};
+	$self->metadata->{prereqs}{configure}{requires}{'CPAN::Meta::Requirements'} = '2.000'
+		if $self->needs_conflict_check_code;
 	$self->metadata->{dynamic_config} = 1
 		if $self->sourcefile(DYNAMIC_CONFIG_PATH)->exists;
 };
@@ -69,11 +88,44 @@ sub Build_MakefilePL
 			. "{ package MY; use File::ShareDir::Install qw(postamble) };\n";
 	}
 	
+	my $conflict_check = $self->needs_conflict_check_code ? $self->conflict_check_code : '';
+	
 	my $makefile = do { local $/ = <DATA> };
 	$makefile =~ s/%%%METADATA%%%/$dump/;
 	$makefile =~ s/%%%SHARE%%%/$share/;
 	$makefile =~ s/%%%DYNAMIC_CONFIG%%%/$dynamic_config/;
+	$makefile =~ s/%%%CONFLICT_CHECK%%%/$conflict_check/;
 	$file->spew_utf8($makefile);
+}
+
+sub conflict_check_code
+{
+	<<'CODE'
+for my $stage (keys %{$meta->{prereqs}})
+{
+	my $conflicts = $meta->{prereqs}{$stage}{conflicts} or next;
+	require CPAN::Meta::Requirements;
+	$conflicts = 'CPAN::Meta::Requirements'->from_string_hash($conflicts);
+	
+	for my $module ($conflicts->required_modules)
+	{
+		eval "require $module" or next;
+		my $installed = eval(sprintf('$%s::VERSION', $module));
+		$conflicts->accepts_module($module, $installed) or next;
+		
+		my $message = "\n".
+			"** This version of $meta->{name} conflicts with the version of\n".
+			"** module $module ($installed) you have installed.\n";
+		die($message . "\n" . "Bailing out")
+			if $stage eq 'build' || $stage eq 'configure';
+		
+		$message .= "**\n".
+			"** It's strongly recommended that you update it after\n".
+			"** installing this version of $meta->{name}.\n";
+		warn("$message\n");
+	}
+}
+CODE
 }
 
 1;
@@ -87,14 +139,14 @@ my $EUMM = 'ExtUtils::MakeMaker'->VERSION;
 my $meta = %%%METADATA%%%;
 
 my %dynamic_config;%%%DYNAMIC_CONFIG%%%
-
+%%%CONFLICT_CHECK%%%
 my %WriteMakefileArgs = (
-	ABSTRACT           => $meta->{abstract},
-	AUTHOR             => ($EUMM >= 6.5702 ? $meta->{author} : $meta->{author}[0]),
-	DISTNAME           => $meta->{name},
-	VERSION            => $meta->{version},
-	EXE_FILES          => [ map $_->{file}, values %{ $meta->{x_provides_scripts} || {} } ],
-	NAME               => do { my $n = $meta->{name}; $n =~ s/-/::/g; $n },
+	ABSTRACT   => $meta->{abstract},
+	AUTHOR     => ($EUMM >= 6.5702 ? $meta->{author} : $meta->{author}[0]),
+	DISTNAME   => $meta->{name},
+	VERSION    => $meta->{version},
+	EXE_FILES  => [ map $_->{file}, values %{ $meta->{x_provides_scripts} || {} } ],
+	NAME       => do { my $n = $meta->{name}; $n =~ s/-/::/g; $n },
 	%dynamic_config,
 );
 
