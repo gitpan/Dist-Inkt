@@ -1,7 +1,7 @@
 package Dist::Inkt::Profile::TOBYINK;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.009';
+our $VERSION   = '0.010';
 
 use Moose;
 
@@ -24,6 +24,7 @@ with qw(
 	Dist::Inkt::Role::WriteCREDITS
 	Dist::Inkt::Role::WriteLICENSE
 	Dist::Inkt::Role::WriteREADME
+	Dist::Inkt::Role::WriteINSTALL
 	Dist::Inkt::Role::SignDistribution
 );
 

@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::ProcessDOAP;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.009';
+our $VERSION   = '0.010';
 
 use Moose::Role;
 use List::MoreUtils 'uniq';
@@ -116,7 +116,7 @@ sub cpanmeta_resources
 		}
 	}
 	
-	REPO: for my $repo (@{$self->doap_project->repository})
+	REPO: for my $repo (@{$self->doap_project->repository || []})
 	{
 		if ($repo->location || $repo->browse)
 		{

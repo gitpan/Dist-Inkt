@@ -7,6 +7,14 @@ Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.010	2013-09-11
+
+ - Added: Output an INSTALL file.
+ - Added: Output optional_features in META.json.
+ - Added: Use dynamic config in Makefile.PL to add dependencies for
+   optional features.
+ - Updated: Support `feature` property from DOAP deps.
+
 0.009	2013-09-06
 
  [ Bug Fixes ]

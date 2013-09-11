@@ -3,7 +3,7 @@ package Dist::Inkt;
 use 5.010001;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.009';
+our $VERSION   = '0.010';
 
 use Moose;
 use Module::Metadata;
@@ -202,8 +202,8 @@ sub BuildAll
 	my $self = shift;
 	$self->BuildTargets;
 	$self->BuildManifest;
-	$self->BuildTarball;
-	$self->cleartarget;
+	$self->BuildTarball unless $ENV{PERL_DIST_INKT_NOTARBALL};
+	$self->cleartarget unless $ENV{PERL_DIST_INKT_KEEPDIR};
 }
 
 sub log

@@ -47,7 +47,7 @@
 	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:name            "Dist-Inkt";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-006>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-007>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-008>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-009>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-006>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-007>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-008>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-009>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-010>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/tobyink/p5-dist-inkt>;
@@ -207,6 +207,29 @@
 	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.009.tar.gz>;
 	doap:revision        "0.009"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-010>
+	a                    doap:Version;
+	dc:identifier        "Dist-Inkt-0.010"^^xsd:string;
+	dc:issued            "2013-09-11"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Update;
+			rdfs:label "Support `feature` property from DOAP deps.";
+		], [
+			a doap-changeset:Addition;
+			rdfs:label "Output optional_features in META.json.";
+		], [
+			a doap-changeset:Addition;
+			rdfs:label "Use dynamic config in Makefile.PL to add dependencies for optional features.";
+		], [
+			a doap-changeset:Addition;
+			rdfs:label "Output an INSTALL file.";
+		];
+	];
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.010.tar.gz>;
+	doap:revision        "0.010"^^xsd:string.
 
 <http://purl.org/NET/cpan-uri/person/haarg>
 	a                    foaf:Person;
