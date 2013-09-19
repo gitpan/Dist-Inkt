@@ -39,17 +39,17 @@ Files: CONTRIBUTING
 Copyright: Unknown
 License: Unknown
 
-Files: COPYRIGHT
- CREDITS
- SIGNATURE
-Copyright: None
-License: public-domain
-
 Files: README
  lib/Dist/Inkt.pm
  t/01basic.t
 Copyright: This software is copyright (c) 2013 by Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
+
+Files: COPYRIGHT
+ CREDITS
+ SIGNATURE
+Copyright: None
+License: public-domain
 
 License: Artistic-1.0
  This software is Copyright (c) 2013 by the copyright holder(s).

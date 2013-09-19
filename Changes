@@ -7,6 +7,12 @@ Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.012	2013-09-19
+
+ [ Bug Fixes ]
+ - Generating LICENSE files now understands CPAN::Meta::Spec 2.0 license
+   codes.
+
 0.011	2013-09-19
 
  [ Bug Fixes ]
