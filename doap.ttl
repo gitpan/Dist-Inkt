@@ -47,7 +47,7 @@
 	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:name            "Dist-Inkt";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-006>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-007>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-008>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-009>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-010>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-006>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-007>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-008>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-009>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-010>, <http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-011>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/tobyink/p5-dist-inkt>;
@@ -230,6 +230,20 @@
 	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.010.tar.gz>;
 	doap:revision        "0.010"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/Dist-Inkt/v_0-011>
+	a                    doap:Version;
+	dc:identifier        "Dist-Inkt-0.011"^^xsd:string;
+	dc:issued            "2013-09-19"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Bugfix;
+			rdfs:label "META.json/yml license codes now conform to CPAN::Meta::Spec 2.0 instead of META-spec 1.4.";
+		];
+	];
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Dist-Inkt-0.011.tar.gz>;
+	doap:revision        "0.011"^^xsd:string.
 
 <http://purl.org/NET/cpan-uri/person/haarg>
 	a                    foaf:Person;

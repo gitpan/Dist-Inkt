@@ -7,6 +7,12 @@ Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.011	2013-09-19
+
+ [ Bug Fixes ]
+ - META.json/yml license codes now conform to CPAN::Meta::Spec 2.0 instead
+   of META-spec 1.4.
+
 0.010	2013-09-11
 
  - Added: Output an INSTALL file.
