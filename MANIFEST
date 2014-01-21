@@ -11,6 +11,7 @@ Makefile.PL
 README
 SIGNATURE
 bin/distinkt-dist
+bin/distinkt-travisyml
 dist.ini
 doap.ttl
 lib/Dist/Inkt.pm

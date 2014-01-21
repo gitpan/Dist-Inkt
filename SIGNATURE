@@ -15,45 +15,46 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 294505f858f11dd062e9916e3f50d88210a9ef54 CONTRIBUTING
-SHA1 4d1e643312da91f29833349befea140b2c0b291b COPYRIGHT
+SHA1 12fd61918cbe74871c794b3895b096c2d0158ca3 COPYRIGHT
 SHA1 fcc0855cf164ac1fe3b59e6c6aee83afc2624e37 CREDITS
-SHA1 65ecb591f47a603f11f26dd530e94b04123b4a45 Changes
+SHA1 12163f530716a75185a649eadc92dac71f198990 Changes
 SHA1 dcd4206242b4a950ac03e6ce2bdb9e51d89ba817 INSTALL
-SHA1 ec5a7b4f3023f03ebf821b57690758f7e6f3ae2a LICENSE
-SHA1 546419ac41fa7a3cf2f76b764007ae4bcf2d78fa MANIFEST
-SHA1 36530fc518607d94835fe2e0ae7fcd4b202489e9 META.json
-SHA1 df1ac91d4d32aaf742c5339cf2c1a83529d506bd META.yml
-SHA1 aabdc6d0c1cad56a827c89c4e48917af617fe9dc Makefile.PL
+SHA1 47870123f373f5185d6893cb98bf06a8a05510aa LICENSE
+SHA1 27dae6a71cd390fcb9b9fd64d3a12cc029ab6fe1 MANIFEST
+SHA1 b6c0a8814bbcf7c77bec972137106ed578ce79b6 META.json
+SHA1 4696d97b408b9f371a3f39de5b8b86e0a17b25f1 META.yml
+SHA1 2848c6af8bd235b0d3b398c466c0bb1a2fb8b695 Makefile.PL
 SHA1 6edf59423f46fbc00800b6a63a40be0041ba5227 README
 SHA1 d010e70b8fff314d9422ec18dde4afb080b96867 bin/distinkt-dist
+SHA1 f6e1a44d004f3b990ebe85d3a7eb9420e2aebe07 bin/distinkt-travisyml
 SHA1 ca02c63e94f49d94b46fe19ab88b401ad63a6cf2 dist.ini
-SHA1 64ededf193e563a5ac777f9f604db9bf5bcb4a5c doap.ttl
-SHA1 3db61c0fb0e1710337bfdb2cce700b2a7c40acb7 lib/Dist/Inkt.pm
-SHA1 53528b6531f4abc167e8f7a81fe7014b528b1b06 lib/Dist/Inkt/Profile/TOBYINK.pm
-SHA1 1b23cff0f2474d1a5c5ad712faa49786061f69b3 lib/Dist/Inkt/Role/CopyFiles.pm
-SHA1 9e27a879f7a3289fe0e3c464a10dde08c0bc0a8e lib/Dist/Inkt/Role/CopyStandardDocuments.pm
-SHA1 056f155e405a7fde754970798269857d1a47a2fd lib/Dist/Inkt/Role/MetaProvides.pm
-SHA1 bfa6aac900288bf0d4a957fe1925e19b7b3f4899 lib/Dist/Inkt/Role/MetaProvidesScripts.pm
-SHA1 511a19ee646e6cc8d691190f8e9d960709e8e27d lib/Dist/Inkt/Role/ProcessDOAP.pm
-SHA1 92bbdf619eefcb9ef7a4f54d830681cf1a8728b8 lib/Dist/Inkt/Role/ProcessDOAPDeps.pm
-SHA1 85414652a722243392528fccccf09741ffaa3330 lib/Dist/Inkt/Role/RDFModel.pm
-SHA1 24e6d76af75dda44f4a4ddd3549609352bfb2356 lib/Dist/Inkt/Role/ReadMetaDir.pm
-SHA1 a490dade04541b2f49016359e1fb1e488ab30a85 lib/Dist/Inkt/Role/SignDistribution.pm
-SHA1 5fdd2826b82891bb0b0810f530ca4f11818b7805 lib/Dist/Inkt/Role/WriteCOPYRIGHT.pm
-SHA1 b45db7388230c1adfbfb34d390c7f09f18197f3e lib/Dist/Inkt/Role/WriteCREDITS.pm
-SHA1 be38aaf9b6ec46593149427a8b5c812b2df34283 lib/Dist/Inkt/Role/WriteChanges.pm
-SHA1 56fcda09919d514f06acb730a4148c416218ef79 lib/Dist/Inkt/Role/WriteDOAP.pm
-SHA1 1bca2f5ae08ee05f2999a29176df7be8583db897 lib/Dist/Inkt/Role/WriteINSTALL.pm
-SHA1 221361a08373c32b84cfddacf4fdabdfd8540f91 lib/Dist/Inkt/Role/WriteLICENSE.pm
-SHA1 56c94eb9f2d92c6e4d13d60f3d08bb95dd3ce79e lib/Dist/Inkt/Role/WriteMakefilePL.pm
-SHA1 f5236e3411b6954c3e5a187e441619a196ec5368 lib/Dist/Inkt/Role/WriteMetaJSON.pm
-SHA1 16601b8139f183e48e43f29881bf625557f4272a lib/Dist/Inkt/Role/WriteMetaYML.pm
-SHA1 785b49bb7a173f83e1af8fa571a48c84d758737b lib/Dist/Inkt/Role/WriteREADME.pm
+SHA1 2733d2ef381ebed2ede69a39a34c490b93a1abb2 doap.ttl
+SHA1 8b5b19cf8e1916cf7d38037aaab21a12e83fdce3 lib/Dist/Inkt.pm
+SHA1 ad690e18920896dad99d1b55c4494d535d76619b lib/Dist/Inkt/Profile/TOBYINK.pm
+SHA1 8271c4cba1c6e7326da527e24455c66cf9472bb5 lib/Dist/Inkt/Role/CopyFiles.pm
+SHA1 1f408a2934948e9eb5d598edada8d8bb99ebb4a8 lib/Dist/Inkt/Role/CopyStandardDocuments.pm
+SHA1 15d0c62050bc51d1af757c584194d8f9f347229f lib/Dist/Inkt/Role/MetaProvides.pm
+SHA1 567a0675c622c0275ca8dac3ee8571c5128eb8f5 lib/Dist/Inkt/Role/MetaProvidesScripts.pm
+SHA1 1dcc9d2bde2e9cd265b1802025ddef2d2400307c lib/Dist/Inkt/Role/ProcessDOAP.pm
+SHA1 5b06525feaed76d1c98c2d69f31bab8a89a308e9 lib/Dist/Inkt/Role/ProcessDOAPDeps.pm
+SHA1 aa6224b710661430de502abec4e30031a2a69832 lib/Dist/Inkt/Role/RDFModel.pm
+SHA1 bec7e798a5b84ececb088f5f20f5c61cf4b85303 lib/Dist/Inkt/Role/ReadMetaDir.pm
+SHA1 dc9431ec04abcd4cc322d6829665a9b3da304a5f lib/Dist/Inkt/Role/SignDistribution.pm
+SHA1 0a32ecdde278e7e6cf7c1b920f7efbf3b81b8f52 lib/Dist/Inkt/Role/WriteCOPYRIGHT.pm
+SHA1 447a6ca6cadb2d1442a79c303ae6d9d01e492eb5 lib/Dist/Inkt/Role/WriteCREDITS.pm
+SHA1 50475ccb69fa4ad29dcd35f0fe668c0d4ea6119a lib/Dist/Inkt/Role/WriteChanges.pm
+SHA1 78dbc8da22c5d821f26eaddc908abee94889db11 lib/Dist/Inkt/Role/WriteDOAP.pm
+SHA1 26a632e3be9f05cb1933a02eeb50b569b47edf5e lib/Dist/Inkt/Role/WriteINSTALL.pm
+SHA1 0c3f2c8459b29cb087b42eeef4047e43cb194c7d lib/Dist/Inkt/Role/WriteLICENSE.pm
+SHA1 4530e4c7f2ea58f9a1c63bef450ae1c4e2f22e17 lib/Dist/Inkt/Role/WriteMakefilePL.pm
+SHA1 6786ffcee9b2b10c73fce045a03011de42f760f4 lib/Dist/Inkt/Role/WriteMetaJSON.pm
+SHA1 4715325a0f41d33f872006664ab046ac46ed65db lib/Dist/Inkt/Role/WriteMetaYML.pm
+SHA1 d6094bb8a59f7e87aaf4063a94a531aea36c2cce lib/Dist/Inkt/Role/WriteREADME.pm
 SHA1 70cfda8dedef237f2ac1ba42bd929dd1c5e29a4e t/01basic.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
+Version: GnuPG v1.4.14 (GNU/Linux)
 
-iEYEARECAAYFAlI+vdsACgkQzr+BKGoqfTnw5ACgtbgn89KqGjRKE/gM32FQhRU3
-WH8An2ANlVPn4ab2YSUs6VoHFA1XepPf
-=DboY
+iEYEARECAAYFAlLe494ACgkQzr+BKGoqfTmEqwCeKzNLxm3tpeLmIlQQFZxZccul
+7YYAnjTlxHA10W391CfhGFBjgiD5tXxo
+=hk3S
 -----END PGP SIGNATURE-----

@@ -6,9 +6,6 @@ Source: https://metacpan.org/release/Dist-Inkt
 Files: Changes
  META.json
  META.yml
- Makefile.PL
- bin/distinkt-dist
- dist.ini
  doap.ttl
  lib/Dist/Inkt/Profile/TOBYINK.pm
  lib/Dist/Inkt/Role/CopyFiles.pm
@@ -30,6 +27,13 @@ Files: Changes
  lib/Dist/Inkt/Role/WriteMetaJSON.pm
  lib/Dist/Inkt/Role/WriteMetaYML.pm
  lib/Dist/Inkt/Role/WriteREADME.pm
+Copyright: Copyright 2014 Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: Makefile.PL
+ bin/distinkt-dist
+ bin/distinkt-travisyml
+ dist.ini
 Copyright: Copyright 2013 Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
@@ -52,14 +56,14 @@ Copyright: Unknown
 License: Unknown
 
 License: Artistic-1.0
- This software is Copyright (c) 2013 by the copyright holder(s).
+ This software is Copyright (c) 2014 by the copyright holder(s).
  
  This is free software, licensed under:
  
    The Artistic License 1.0
 
 License: GPL-1.0
- This software is Copyright (c) 2013 by the copyright holder(s).
+ This software is Copyright (c) 2014 by the copyright holder(s).
  
  This is free software, licensed under:
  
