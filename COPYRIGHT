@@ -6,21 +6,16 @@ Source: https://metacpan.org/release/Dist-Inkt
 Files: Changes
  META.json
  META.yml
+ bin/distinkt-dist
  doap.ttl
- lib/Dist/Inkt/Profile/TOBYINK.pm
+ lib/Dist/Inkt/Profile/Simple.pm
+ lib/Dist/Inkt/Role/CPANfile.pm
  lib/Dist/Inkt/Role/CopyFiles.pm
  lib/Dist/Inkt/Role/CopyStandardDocuments.pm
  lib/Dist/Inkt/Role/MetaProvides.pm
  lib/Dist/Inkt/Role/MetaProvidesScripts.pm
- lib/Dist/Inkt/Role/ProcessDOAP.pm
- lib/Dist/Inkt/Role/ProcessDOAPDeps.pm
- lib/Dist/Inkt/Role/RDFModel.pm
- lib/Dist/Inkt/Role/ReadMetaDir.pm
  lib/Dist/Inkt/Role/SignDistribution.pm
- lib/Dist/Inkt/Role/WriteCOPYRIGHT.pm
- lib/Dist/Inkt/Role/WriteCREDITS.pm
- lib/Dist/Inkt/Role/WriteChanges.pm
- lib/Dist/Inkt/Role/WriteDOAP.pm
+ lib/Dist/Inkt/Role/WriteDOAPLite.pm
  lib/Dist/Inkt/Role/WriteINSTALL.pm
  lib/Dist/Inkt/Role/WriteLICENSE.pm
  lib/Dist/Inkt/Role/WriteMakefilePL.pm
@@ -30,16 +25,12 @@ Files: Changes
 Copyright: Copyright 2014 Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
-Files: Makefile.PL
- bin/distinkt-dist
- bin/distinkt-travisyml
- dist.ini
-Copyright: Copyright 2013 Toby Inkster.
-License: GPL-1.0+ or Artistic-1.0
-
 Files: CONTRIBUTING
  INSTALL
  LICENSE
+ examples/p5-acme-example-dist/cpanfile
+ examples/p5-acme-example-dist/dist.ini
+ examples/p5-acme-example-dist/meta/META.PL
 Copyright: Unknown
 License: Unknown
 
@@ -49,9 +40,23 @@ Files: COPYRIGHT
 Copyright: None
 License: public-domain
 
+Files: Makefile.PL
+ bin/distinkt-travisyml
+ dist.ini
+Copyright: Copyright 2013 Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
+ examples/p5-acme-example-dist/t/01basic.t
+Copyright: This software is copyright (c) 2014 by Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
 Files: README
  lib/Dist/Inkt.pm
- t/01basic.t
+Copyright: This software is copyright (c) 2013-2014 by Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: t/01basic.t
 Copyright: This software is copyright (c) 2013 by Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 

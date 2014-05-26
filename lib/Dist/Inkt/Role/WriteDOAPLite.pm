@@ -1,13 +1,10 @@
-package Dist::Inkt::Role::WriteDOAP;
+package Dist::Inkt::Role::WriteDOAPLite;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.015';
+our $VERSION   = '0.016';
 
 use Moose::Role;
-use RDF::TrineX::Functions 'serialize';
 use namespace::autoclean;
-
-with 'Dist::Inkt::Role::RDFModel';
 
 after BUILD => sub {
 	my $self = shift;
@@ -23,18 +20,20 @@ sub Build_DOAP
 	
 	$self->rights_for_generated_files->{'doap.ttl'} ||= [
 		$self->_inherited_rights
-	] if $self->DOES('Dist::Inkt::Role::WriteCOPYRIGHT');
+	];
 	
-	my $serializer = eval {
-		require RDF::TrineX::Serializer::MockTurtleSoup;
-		'RDF::TrineX::Serializer::MockTurtleSoup'->new;
-	} || 'RDF::Trine::Serializer::Turtle'->new;
+	require CPAN::Changes;
+	require RDF::DOAP::Lite;
 	
-	serialize(
-		$self->model,
-		to    => $file->openw,
-		using => $serializer,
-	);
+	my $changes;
+	$changes = CPAN::Changes->load($self->sourcefile('Changes'))
+		if $self->sourcefile('Changes')->exists;
+	
+	my $doap = $changes
+		? RDF::DOAP::Lite->new(meta => $self->metadata, changes => $changes)
+		: RDF::DOAP::Lite->new(meta => $self->metadata);
+	
+	$doap->doap_ttl( $file->absolute->stringify );
 }
 
 1;

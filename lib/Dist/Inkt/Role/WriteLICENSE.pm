@@ -1,13 +1,11 @@
 package Dist::Inkt::Role::WriteLICENSE;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.015';
+our $VERSION   = '0.016';
 
 use Moose::Role;
 use Software::LicenseUtils;
 use namespace::autoclean;
-
-with 'Dist::Inkt::Role::RDFModel';
 
 after BUILD => sub {
 	my $self = shift;
@@ -94,13 +92,17 @@ sub Build_LICENSE
 		return;
 	}
 	
+	my $holders = Moose::Util::english_list(
+		$self->can('doap_project')
+			? map($_->to_string('compact'), @{$self->doap_project->maintainer})
+			: @{$self->metadata->{author}}
+	);
+	
 	$class = "Software::License::$class";
 	eval "require $class;";
 	my $licence = $class->new({
 		year   => [localtime]->[5] + 1900,
-		holder => Moose::Util::english_list(
-			sort map $_->to_string('compact'), $self->doap_project->gather_all_maintainers
-		),
+		holder => $holders,
 	});
 	
 	$file->spew_utf8( $licence->fulltext );

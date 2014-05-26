@@ -19,7 +19,7 @@ DESCRIPTION
     framework for writing your own distribution builder.
 
     Several roles of varying utility are bundled with Dist::Inkt, as is
-    Dist::Inkt::Profile::TOBYINK, a subclass of Dist::Inkt which consumes all
+    Dist::Inkt::Profile::Simple, a subclass of Dist::Inkt which consumes most
     of these roles.
 
 COMPANIONS
@@ -59,11 +59,17 @@ SEE ALSO
 
     *   Minilla
 
+    Various extensions for Dist::Inkt:
+
+    *   Dist::Inkt::DOAP
+
+    *   Dist::Inkt::Profile::TOBYINK
+
 AUTHOR
     Toby Inkster <tobyink@cpan.org>.
 
 COPYRIGHT AND LICENCE
-    This software is copyright (c) 2013 by Toby Inkster.
+    This software is copyright (c) 2013-2014 by Toby Inkster.
 
     This is free software; you can redistribute it and/or modify it under the
     same terms as the Perl 5 programming language system itself.

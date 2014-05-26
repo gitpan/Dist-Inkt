@@ -3,10 +3,11 @@ package Dist::Inkt;
 use 5.010001;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.015';
+our $VERSION   = '0.016';
 
 use Moose;
 use Module::Metadata;
+use List::MoreUtils qw(uniq);
 use Types::Standard -types;
 use Types::Path::Tiny -types;
 use Path::Tiny 'path';
@@ -103,6 +104,12 @@ sub _build_metadata
 	for (qw/ license author /) {
 		$meta->{$_} = [] if @{$meta->{$_}}==1 && $meta->{$_}[0] eq 'unknown';
 	}
+	if ($self->sourcefile('meta/META.PL'))
+	{
+		local $_ = $meta;
+		my $filename = $self->sourcefile('meta/META.PL')->absolute->stringify;
+		do($filename);
+	}
 	return $meta;
 }
 
@@ -125,17 +132,52 @@ has targets => (
 	builder  => '_build_targets',
 );
 
-sub _build_targets
-{
-	return [];
-}
+sub _build_targets { [] }
+
+has rights_for_generated_files => (
+	is       => 'ro',
+	isa      => HashRef[ArrayRef],
+	default  => sub {
+		+{
+			COPYRIGHT => [ 'None' => 'public-domain' ],
+		};
+	},
+);
+
+sub _inherited_rights {}
 
 sub BUILD
 {
 	my $self = shift;
+	
 	return if $self->{_already_built}++;
 	$self->PopulateModel;
 	$self->PopulateMetadata;
+	
+	my $die = 0;
+	
+	my $l = $self->metadata->{license};
+	unless ($l and ref($l) eq 'ARRAY' and @$l and $l->[0] ne 'unknown')
+	{
+		$self->log("ERROR: licence unknown!");
+		$die++;
+	}
+	
+	my $a = $self->metadata->{author};
+	unless ($a and ref($a) eq 'ARRAY' and @$a and $a->[0] ne 'unknown')
+	{
+		$self->log("ERROR: author unknown!");
+		$die++;
+	}
+	
+	my $b = $self->metadata->{abstract};
+	unless (defined($b) and $b ne 'unknown')
+	{
+		$self->log("ERROR: abstract unknown!");
+		$die++;
+	}
+	
+	die "Incomplete metadata; stopped" if $die;
 }
 
 sub PopulateModel {}
@@ -149,7 +191,7 @@ sub BuildTargets
 	
 	$self->Build_Files if $self->DOES('Dist::Inkt::Role::CopyFiles');
 	
-	for my $target (@{ $self->targets })
+	for my $target (uniq @{ $self->targets })
 	{
 		next if $self->DOES('Dist::Inkt::Role::CopyFiles') && $target eq 'Files';
 		
@@ -166,7 +208,7 @@ sub BuildManifest
 	$self->log("Writing $file");
 	$self->rights_for_generated_files->{'MANIFEST'} ||= [
 		'None', 'public-domain'
-	] if $self->DOES('Dist::Inkt::Role::WriteCOPYRIGHT');
+	];
 	
 	my $rule = 'Path::Iterator::Rule'->new->file;
 	my $root = $self->targetdir;
@@ -247,8 +289,8 @@ As such, Dist::Inkt is not so much a distribution builder, as it is a
 framework for writing your own distribution builder.
 
 Several roles of varying utility are bundled with Dist::Inkt, as is
-L<Dist::Inkt::Profile::TOBYINK>, a subclass of Dist::Inkt which consumes
-all of these roles.
+L<Dist::Inkt::Profile::Simple>, a subclass of Dist::Inkt which consumes
+most of these roles.
 
 =head1 COMPANIONS
 
@@ -309,13 +351,27 @@ L<Minilla>
 
 =back
 
+Various extensions for Dist::Inkt:
+
+=over
+
+=item *
+
+L<Dist::Inkt::DOAP>
+
+=item *
+
+L<Dist::Inkt::Profile::TOBYINK>
+
+=back
+
 =head1 AUTHOR
 
 Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013 by Toby Inkster.
+This software is copyright (c) 2013-2014 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

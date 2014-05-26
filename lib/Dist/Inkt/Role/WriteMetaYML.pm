@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMetaYML;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.015';
+our $VERSION   = '0.016';
 
 use Moose::Role;
 use namespace::autoclean;
@@ -19,7 +19,7 @@ sub Build_MetaYML
 	$self->log('Writing %s', $file);
 	$self->rights_for_generated_files->{'META.yml'} ||= [
 		$self->_inherited_rights
-	] if $self->DOES('Dist::Inkt::Role::WriteCOPYRIGHT');
+	];
 	$self->metadata->save($file, { version => '1.4' });
 }
 

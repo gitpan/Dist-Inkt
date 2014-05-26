@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMakefilePL;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.015';
+our $VERSION   = '0.016';
 
 use Moose::Role;
 use Types::Standard -types;
@@ -67,7 +67,7 @@ has needs_optional_features_code => (
 sub _build_needs_optional_features_code
 {
 	my $self = shift;
-	!! %{ $self->metadata->{optional_features} };
+	!! %{ $self->metadata->{optional_features} || {} };
 }
 
 after PopulateMetadata => sub {
@@ -110,7 +110,7 @@ sub Build_MakefilePL
 	$self->rights_for_generated_files->{'Makefile.PL'} ||= [
 		'Copyright 2013 Toby Inkster.',
 		"Software::License::Perl_5"->new({ holder => 'Toby Inkster', year => '2013' }),
-	] if $self->DOES('Dist::Inkt::Role::WriteCOPYRIGHT') && !$dynamic_config;
+	] if !$dynamic_config;
 
 	my $share = '';
 	if ($self->has_shared_files)
