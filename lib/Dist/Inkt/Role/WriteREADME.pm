@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteREADME;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.016';
+our $VERSION   = '0.017';
 
 use Moose::Role;
 use Pod::Text;
@@ -45,7 +45,7 @@ sub Build_README
 	# inherit rights from input pod
 	$self->rights_for_generated_files->{'README'} ||= [
 		$self->_determine_rights($input)
-	];
+	] if $self->can('_determine_rights');
 
 	$pod->parse_from_file("$input", "$file");
 }

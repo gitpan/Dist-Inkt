@@ -17,7 +17,6 @@ doap.ttl
 examples/p5-acme-example-dist/cpanfile
 examples/p5-acme-example-dist/dist.ini
 examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
-examples/p5-acme-example-dist/meta/META.PL
 examples/p5-acme-example-dist/t/01basic.t
 lib/Dist/Inkt.pm
 lib/Dist/Inkt/Profile/Simple.pm

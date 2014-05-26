@@ -30,7 +30,6 @@ Files: CONTRIBUTING
  LICENSE
  examples/p5-acme-example-dist/cpanfile
  examples/p5-acme-example-dist/dist.ini
- examples/p5-acme-example-dist/meta/META.PL
 Copyright: Unknown
 License: Unknown
 
@@ -46,14 +45,14 @@ Files: Makefile.PL
 Copyright: Copyright 2013 Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
-Files: examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
- examples/p5-acme-example-dist/t/01basic.t
-Copyright: This software is copyright (c) 2014 by Toby Inkster.
-License: GPL-1.0+ or Artistic-1.0
-
 Files: README
  lib/Dist/Inkt.pm
 Copyright: This software is copyright (c) 2013-2014 by Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
+ examples/p5-acme-example-dist/t/01basic.t
+Copyright: This software is copyright (c) 2014 by Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
 Files: t/01basic.t
