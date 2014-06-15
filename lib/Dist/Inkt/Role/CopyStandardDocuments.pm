@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::CopyStandardDocuments;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.018';
+our $VERSION   = '0.019';
 
 use Moose::Role;
 use Types::Path::Tiny -types;
@@ -10,7 +10,7 @@ use namespace::autoclean;
 
 has standard_documents_dir => (
 	is       => 'ro',
-	isa      => AbsDir,
+	isa      => AbsPath,
 	coerce   => 1,
 	lazy     => 1,
 	builder  => '_build_standard_documents_dir',
@@ -31,6 +31,7 @@ sub Build_StandardDocuments
 	my $self = shift;
 	
 	my $src = $self->standard_documents_dir;
+	$src->exists or return;
 	$src->is_dir or return;
 	
 	my $dest = $self->targetdir;

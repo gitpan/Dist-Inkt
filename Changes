@@ -7,6 +7,16 @@ Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Dist-Inkt>
 Wiki:         <https://github.com/tobyink/p5-dist-inkt/wiki>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.019	2014-06-15
+
+ [ Packaging ]
+ - Add missing Path::FindDev dependency.
+
+ [ Other ]
+ - Cope when ~/perl5/standard-documents/ is missing.
+ - Support PERL_DIST_INKT_NOSIGNATURE environment variable to skip building
+   a SIGNATURE file.
+
 0.018	2014-06-14
 
  [ Packaging ]

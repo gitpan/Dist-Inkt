@@ -17,42 +17,42 @@ Hash: SHA1
 SHA1 33317486c4fa2cf7fec85bf92ed38ac0f64233a0 CONTRIBUTING
 SHA1 b11b1e02effdac8bbaa41f52e4d19b4c2aef6219 COPYRIGHT
 SHA1 fcc0855cf164ac1fe3b59e6c6aee83afc2624e37 CREDITS
-SHA1 82f92f5b675a6b9e1a5335111df4f9957b9f96eb Changes
+SHA1 7e2df905344c5989f8e6f595320f3f5c46263498 Changes
 SHA1 dcd4206242b4a950ac03e6ce2bdb9e51d89ba817 INSTALL
 SHA1 34f5e12514b91055de4b164a1f2327ef5c30ba53 LICENSE
 SHA1 99ace97e8366b8c24484b0ba8f6c29bafc355594 MANIFEST
-SHA1 fb8131fb87eed527c6783e270a5a45b332de60cc META.json
-SHA1 dc8f79063129c54864f5d5c54d31e1d81fe819e1 META.yml
-SHA1 ed0d593f2ab2448948c6e4c44905f98d96de5171 Makefile.PL
+SHA1 28375bfba1b68a2a486ab1aa69eefcf470d927d3 META.json
+SHA1 e851ab9da9debe0641534709a6f8fdeec6e5e54c META.yml
+SHA1 bf723d25cc87292b86196233a8ef6d88cf67be43 Makefile.PL
 SHA1 40616f90fbef6ba6e868703ca78726c4b7100a9c README
 SHA1 163ccb42c78647369b1973128394a1ff1b38c596 bin/distinkt-dist
 SHA1 f6e1a44d004f3b990ebe85d3a7eb9420e2aebe07 bin/distinkt-travisyml
 SHA1 ca02c63e94f49d94b46fe19ab88b401ad63a6cf2 dist.ini
-SHA1 be780708994171db2990af68b60d655883210f67 doap.ttl
+SHA1 4d921e53b8567309a5cea9f05635363d8dc4385b doap.ttl
 SHA1 82c7c07e605d952cbe2f3516c98c290282c3c0de examples/p5-acme-example-dist/cpanfile
 SHA1 a690b388032c6a3f4ee2e39be738fe9e35eb3130 examples/p5-acme-example-dist/dist.ini
 SHA1 e47ef7ecef48b27d0d9467b59d2ce15ff8f71d32 examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
 SHA1 b4c6387b21ed54fa72c5cba9646292bb0a725781 examples/p5-acme-example-dist/t/01basic.t
-SHA1 4a66dc4d22c8e9e711d131073eec77778b2864af lib/Dist/Inkt.pm
-SHA1 178d789691e24dc308087e89e644f8e5ed328c7c lib/Dist/Inkt/Profile/Simple.pm
-SHA1 52cc5f976f5ce6e04d2a34cf7568e2277b831212 lib/Dist/Inkt/Role/CPANfile.pm
-SHA1 39f326425740d19c26cd557729e47ba4febc8549 lib/Dist/Inkt/Role/CopyFiles.pm
-SHA1 7ec054bc65f271532c701ab464ee04a9eaeff39c lib/Dist/Inkt/Role/CopyStandardDocuments.pm
-SHA1 a6b027f721737b02f374bdbbe594279e1eb8cb52 lib/Dist/Inkt/Role/MetaProvides.pm
-SHA1 21b7d4aacfbf53ef572acb486d8570f475be689e lib/Dist/Inkt/Role/MetaProvidesScripts.pm
-SHA1 15c0ff2fdf6376e09b2943264b703a50d46fbdab lib/Dist/Inkt/Role/SignDistribution.pm
-SHA1 da1ae5c0d84ccccfede45c75a4243e8c0bf25557 lib/Dist/Inkt/Role/WriteDOAPLite.pm
-SHA1 94f00ea35f919255024a08f9983631460a099b53 lib/Dist/Inkt/Role/WriteINSTALL.pm
-SHA1 833b86709c9ca1b28a6e64ad082bf9f1deaf4880 lib/Dist/Inkt/Role/WriteLICENSE.pm
-SHA1 6dbf038f37ce38fd49b9288d355c69fe2e31673c lib/Dist/Inkt/Role/WriteMakefilePL.pm
-SHA1 a3fe3bb8d1295ad9976b8b911dc668fd6ec8f48c lib/Dist/Inkt/Role/WriteMetaJSON.pm
-SHA1 754d2c14d17753fdde91f0c72dce45b3eedc7443 lib/Dist/Inkt/Role/WriteMetaYML.pm
-SHA1 379203056c76d5ce02e9f68b340bf73db3aa6a0a lib/Dist/Inkt/Role/WriteREADME.pm
+SHA1 5f85ecc9eee1d0b440fb7e86b34598b710138b8f lib/Dist/Inkt.pm
+SHA1 454f93c3b6bc1e8a16c3f55e9932895625b0bc71 lib/Dist/Inkt/Profile/Simple.pm
+SHA1 6f3de3c5a7c0ffcf6f52ac7668c83f359ec538d3 lib/Dist/Inkt/Role/CPANfile.pm
+SHA1 59f2da275324d0fb80f9dd3275e0125bdb2d3408 lib/Dist/Inkt/Role/CopyFiles.pm
+SHA1 d5ca163c35ab5079607463710b9a385d8be4b2fc lib/Dist/Inkt/Role/CopyStandardDocuments.pm
+SHA1 6701abaeb3010adf330bd8769834637a56536530 lib/Dist/Inkt/Role/MetaProvides.pm
+SHA1 90112dd9f3830b9a73d7fc79eac2e6aa83af0b86 lib/Dist/Inkt/Role/MetaProvidesScripts.pm
+SHA1 b14a487cd281dd76722112addd9959a055d718f1 lib/Dist/Inkt/Role/SignDistribution.pm
+SHA1 6729f1f5baa248cacd94c6dd30876eb5a221257e lib/Dist/Inkt/Role/WriteDOAPLite.pm
+SHA1 c8a1b8e20c82401f9b0e89a0e6a3e1ed18ae9985 lib/Dist/Inkt/Role/WriteINSTALL.pm
+SHA1 777949b40431def3ea4ca85e7658eacfaea654ec lib/Dist/Inkt/Role/WriteLICENSE.pm
+SHA1 02ff5a55680a71aa192f6098d17216b4b88c9a84 lib/Dist/Inkt/Role/WriteMakefilePL.pm
+SHA1 2befd0008fe2a80e757eee1a450aed2c1ffa05e6 lib/Dist/Inkt/Role/WriteMetaJSON.pm
+SHA1 4e896216c684ee5437cdf908804ca39db4526158 lib/Dist/Inkt/Role/WriteMetaYML.pm
+SHA1 ef3300a937642ff90197f56006a853d167446bac lib/Dist/Inkt/Role/WriteREADME.pm
 SHA1 70cfda8dedef237f2ac1ba42bd929dd1c5e29a4e t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iEYEARECAAYFAlOcuO0ACgkQzr+BKGoqfTkx1gCdFGjsaCc/6loCdk8L2vaWuwyk
-GI4AoJz7YCm0mhwgCrpLRj1sgtaa/H//
-=pcxz
+iEYEARECAAYFAlOdVW0ACgkQzr+BKGoqfTlT7QCdFzBb2ibnaEXQUqwQwsF1b0sR
+/IgAn24DAaeX3wooL1Ys60UYyX7/DNFU
+=tDPF
 -----END PGP SIGNATURE-----
