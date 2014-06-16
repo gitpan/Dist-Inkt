@@ -3,7 +3,7 @@ package Dist::Inkt;
 use 5.010001;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.019';
+our $VERSION   = '0.020';
 
 use Moose;
 use Module::Metadata;
@@ -12,6 +12,7 @@ use Types::Standard -types;
 use Types::Path::Tiny -types;
 use Path::Tiny 'path';
 use Path::Iterator::Rule;
+use Module::Runtime qw(use_package_optimistically);
 use namespace::autoclean;
 
 has name => (
@@ -61,9 +62,20 @@ has rootdir => (
 	},
 );
 
+has targetdir_pattern => (
+	is       => 'ro',
+	isa      => Str,
+	lazy     => 1,
+	builder  => '_build_targetdir_pattern',
+);
+
+sub _build_targetdir_pattern {
+	'%(name)s-%(version)s'
+}
+
 has targetdir => (
 	is       => 'ro',
-	isa      => AbsDir,
+	isa      => Path,
 	lazy     => 1,
 	coerce   => 1,
 	builder  => '_build_targetdir',
@@ -76,11 +88,17 @@ has targetdir => (
 sub _build_targetdir
 {
 	my $self = shift;
-	my $name = sprintf('%s-%s', $self->name, $self->version);
 	
-	my $dir = $self->rootdir->child($name);
-	$dir->mkpath;
-	return $dir;
+	require Text::sprintfn;
+	my $name = Text::sprintfn::sprintfn(
+		$self->targetdir_pattern,
+		{
+			name     => $self->name,
+			version  => $self->version,
+		},
+	);
+	
+	$self->rootdir->child($name);
 }
 
 has metadata => (
@@ -146,11 +164,44 @@ has rights_for_generated_files => (
 
 sub _inherited_rights {}
 
+sub new_from_ini
+{
+	my $self   = shift;
+	my $ini    = shift;
+	my (%args) = @_;
+	
+	if (defined $ini)
+	{
+		$ini = File->assert_coerce($ini);
+	}
+	else
+	{
+		require Cwd;
+		$ini = path(Cwd::cwd)->child('dist.ini');
+		$ini->exists or confess("Could not find dist.ini; bailing out");
+	}
+	
+	my @lines = grep /^;;/, $ini->lines_utf8;
+	chomp @lines;
+	
+	my %config = map {
+		s/(?:^;;\s*)|(?:\s*$)//g;
+		my ($key, $value) = split /\s*=\s*/, $_, 2;
+		$key => scalar(eval($value));
+	} @lines;
+	
+	my $class = delete($config{class}) || 'Dist::Inkt::Profile::Simple';
+	
+	$config{rootdir} ||= $ini->dirname;
+	
+	use_package_optimistically($class)->new(%config, %args);
+}
+
 sub BUILD
 {
 	my $self = shift;
-	
 	return if $self->{_already_built}++;
+	
 	$self->PopulateModel;
 	$self->PopulateMetadata;
 	
@@ -188,6 +239,7 @@ sub BuildTargets
 	my $self = shift;
 	
 	$self->cleartarget;
+	$self->targetdir->mkpath;
 	
 	$self->Build_Files if $self->DOES('Dist::Inkt::Role::CopyFiles');
 	
@@ -239,13 +291,78 @@ sub BuildTarball
 	$tar->write($file, Archive::Tar::COMPRESS_GZIP());
 }
 
+has should_compress => (
+	is       => 'ro',
+	isa      => Bool,
+	default  => sub { !$ENV{PERL_DIST_INKT_NOTARBALL} },
+);
+
 sub BuildAll
 {
 	my $self = shift;
 	$self->BuildTargets;
 	$self->BuildManifest;
-	$self->BuildTarball unless $ENV{PERL_DIST_INKT_NOTARBALL};
-	$self->cleartarget unless $ENV{PERL_DIST_INKT_KEEPDIR};
+	if ($self->should_compress) {
+		$self->BuildTarball;
+		$self->cleartarget;
+	}
+}
+
+sub BuildTravisYml
+{
+	my $self = shift;
+	
+	$self->log("Generating .travis.yml");
+	my $yml = $self->sourcefile(".travis.yml")->openw;
+	
+	my $perl_ver = $self->metadata->{prereqs}{runtime}{requires}{perl} || '5.014';
+	
+	print {$yml} "language: perl\n";
+	print {$yml} "perl:\n";
+	for my $v (8, 10, 12, 14, 16, 18, 20)
+	{
+		my $formatted = sprintf("5.%03d000", $v);
+		$formatted = '5.008001' if $formatted eq '5.008000';
+		
+		if ($formatted ge $perl_ver)
+		{
+			print {$yml} "  - \"5.$v\"\n";
+		}
+	}
+	
+	my $class = ref($self);
+	
+## no Test::Tabs
+	
+	print {$yml} <<"TAIL";
+matrix:
+  include:
+    - perl: 5.18.2
+      env: COVERAGE=1         # enables coverage+coveralls reporting
+before_install:
+  - export DIST_INKT_PROFILE="$class"
+  - git clone git://github.com/tobyink/perl-travis-helper
+  - source perl-travis-helper/init
+  - build-perl
+  - perl -V
+  - build-dist
+  - cd \$BUILD_DIR             # \$BUILD_DIR is set by the build-dist command
+install:
+  - cpan-install --toolchain  # installs a vaguely recent EUMM, Exporter
+  - cpan-install --deps       # installs prereqs, including recommends
+  - cpan-install --coverage   # installs converage prereqs, if enabled
+before_script:
+  - coverage-setup
+script:
+  - prove -l -j\$((SYSTEM_CORES + 1)) \$(test-dirs)   # parallel testing
+after_success:
+  - coverage-report
+
+TAIL
+
+## use Test::Tabs
+	
+	return;
 }
 
 sub log

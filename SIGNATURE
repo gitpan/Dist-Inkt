@@ -15,44 +15,44 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 33317486c4fa2cf7fec85bf92ed38ac0f64233a0 CONTRIBUTING
-SHA1 b11b1e02effdac8bbaa41f52e4d19b4c2aef6219 COPYRIGHT
+SHA1 a020c898602ea858a82975e83264e99fb785278e COPYRIGHT
 SHA1 fcc0855cf164ac1fe3b59e6c6aee83afc2624e37 CREDITS
-SHA1 7e2df905344c5989f8e6f595320f3f5c46263498 Changes
+SHA1 0f00a63379366305b5accf95dd99d1c736e4e464 Changes
 SHA1 dcd4206242b4a950ac03e6ce2bdb9e51d89ba817 INSTALL
 SHA1 34f5e12514b91055de4b164a1f2327ef5c30ba53 LICENSE
 SHA1 99ace97e8366b8c24484b0ba8f6c29bafc355594 MANIFEST
-SHA1 28375bfba1b68a2a486ab1aa69eefcf470d927d3 META.json
-SHA1 e851ab9da9debe0641534709a6f8fdeec6e5e54c META.yml
-SHA1 bf723d25cc87292b86196233a8ef6d88cf67be43 Makefile.PL
+SHA1 5941ead7823260832deaeada33fae2d15d1e0a2f META.json
+SHA1 33bf2e527a718f140ff0dde196b43fa33a8782d1 META.yml
+SHA1 9abb0d73891e930103d59e2261e22681f2e145c6 Makefile.PL
 SHA1 40616f90fbef6ba6e868703ca78726c4b7100a9c README
-SHA1 163ccb42c78647369b1973128394a1ff1b38c596 bin/distinkt-dist
-SHA1 f6e1a44d004f3b990ebe85d3a7eb9420e2aebe07 bin/distinkt-travisyml
+SHA1 de114d68beb151f5275468c44ed4ea0697440d07 bin/distinkt-dist
+SHA1 33c68bcd6f6bf9cea1a3530d0278856bb621e61d bin/distinkt-travisyml
 SHA1 ca02c63e94f49d94b46fe19ab88b401ad63a6cf2 dist.ini
-SHA1 4d921e53b8567309a5cea9f05635363d8dc4385b doap.ttl
+SHA1 ed7b4909874feb9e9acc46e5ca69fb9d19cd4f68 doap.ttl
 SHA1 82c7c07e605d952cbe2f3516c98c290282c3c0de examples/p5-acme-example-dist/cpanfile
 SHA1 a690b388032c6a3f4ee2e39be738fe9e35eb3130 examples/p5-acme-example-dist/dist.ini
 SHA1 e47ef7ecef48b27d0d9467b59d2ce15ff8f71d32 examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
 SHA1 b4c6387b21ed54fa72c5cba9646292bb0a725781 examples/p5-acme-example-dist/t/01basic.t
-SHA1 5f85ecc9eee1d0b440fb7e86b34598b710138b8f lib/Dist/Inkt.pm
-SHA1 454f93c3b6bc1e8a16c3f55e9932895625b0bc71 lib/Dist/Inkt/Profile/Simple.pm
-SHA1 6f3de3c5a7c0ffcf6f52ac7668c83f359ec538d3 lib/Dist/Inkt/Role/CPANfile.pm
-SHA1 59f2da275324d0fb80f9dd3275e0125bdb2d3408 lib/Dist/Inkt/Role/CopyFiles.pm
-SHA1 d5ca163c35ab5079607463710b9a385d8be4b2fc lib/Dist/Inkt/Role/CopyStandardDocuments.pm
-SHA1 6701abaeb3010adf330bd8769834637a56536530 lib/Dist/Inkt/Role/MetaProvides.pm
-SHA1 90112dd9f3830b9a73d7fc79eac2e6aa83af0b86 lib/Dist/Inkt/Role/MetaProvidesScripts.pm
-SHA1 b14a487cd281dd76722112addd9959a055d718f1 lib/Dist/Inkt/Role/SignDistribution.pm
-SHA1 6729f1f5baa248cacd94c6dd30876eb5a221257e lib/Dist/Inkt/Role/WriteDOAPLite.pm
-SHA1 c8a1b8e20c82401f9b0e89a0e6a3e1ed18ae9985 lib/Dist/Inkt/Role/WriteINSTALL.pm
-SHA1 777949b40431def3ea4ca85e7658eacfaea654ec lib/Dist/Inkt/Role/WriteLICENSE.pm
-SHA1 02ff5a55680a71aa192f6098d17216b4b88c9a84 lib/Dist/Inkt/Role/WriteMakefilePL.pm
-SHA1 2befd0008fe2a80e757eee1a450aed2c1ffa05e6 lib/Dist/Inkt/Role/WriteMetaJSON.pm
-SHA1 4e896216c684ee5437cdf908804ca39db4526158 lib/Dist/Inkt/Role/WriteMetaYML.pm
-SHA1 ef3300a937642ff90197f56006a853d167446bac lib/Dist/Inkt/Role/WriteREADME.pm
+SHA1 6fe137d18ca3c07b353735c572460f8ffd6d160e lib/Dist/Inkt.pm
+SHA1 bee23f03b733cb9f76237005434a1c28a0aca256 lib/Dist/Inkt/Profile/Simple.pm
+SHA1 73b7abc8c1f2299c2a06dfc13f3a4046af654e5e lib/Dist/Inkt/Role/CPANfile.pm
+SHA1 e76b62626ea75b57068d126dd0411a275411755c lib/Dist/Inkt/Role/CopyFiles.pm
+SHA1 c9d036ef4138f180f29d2667f7ec1a9425bc2ad5 lib/Dist/Inkt/Role/CopyStandardDocuments.pm
+SHA1 f3f8a0f39b0abe2aaccf21d26e04f80a0e14859a lib/Dist/Inkt/Role/MetaProvides.pm
+SHA1 bfa212b2b66a2af48894de80245b51878dd69f98 lib/Dist/Inkt/Role/MetaProvidesScripts.pm
+SHA1 1b76d8e240d794f33ac8cc1b3acb2fecf70bbd03 lib/Dist/Inkt/Role/SignDistribution.pm
+SHA1 f503775987ec1ab3a1d9a35ab4aac2d84695fc02 lib/Dist/Inkt/Role/WriteDOAPLite.pm
+SHA1 2581057f1ef661b9845cbfec5ec4cf347da66b56 lib/Dist/Inkt/Role/WriteINSTALL.pm
+SHA1 18ff1313efe2c0fb7675e7a4da8e3123da8ba7a7 lib/Dist/Inkt/Role/WriteLICENSE.pm
+SHA1 ab773ec608a43454947c922cba31f7af5c0a5f6f lib/Dist/Inkt/Role/WriteMakefilePL.pm
+SHA1 78420a1dacb2f084b7098594e3e3bf00faedbf0d lib/Dist/Inkt/Role/WriteMetaJSON.pm
+SHA1 889530f69f24a72d105ff71eab3655bd0cd93a57 lib/Dist/Inkt/Role/WriteMetaYML.pm
+SHA1 af1f10411770ca540932dd0e9cf413582dcb3c09 lib/Dist/Inkt/Role/WriteREADME.pm
 SHA1 70cfda8dedef237f2ac1ba42bd929dd1c5e29a4e t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iEYEARECAAYFAlOdVW0ACgkQzr+BKGoqfTlT7QCdFzBb2ibnaEXQUqwQwsF1b0sR
-/IgAn24DAaeX3wooL1Ys60UYyX7/DNFU
-=tDPF
+iEYEARECAAYFAlOe1u4ACgkQzr+BKGoqfTkHQQCcD3Rz1t7lgLq8/tpSie70Vihi
+u6AAoJU1V5bg4ac3l2SIZef3KmMKRLri
+=wbfn
 -----END PGP SIGNATURE-----

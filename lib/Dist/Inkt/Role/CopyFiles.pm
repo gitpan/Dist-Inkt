@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::CopyFiles;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.019';
+our $VERSION   = '0.020';
 
 use Moose::Role;
 use Types::Standard -types;
@@ -30,6 +30,7 @@ sub _build_manifest_skip
 	my $name = quotemeta($self->name);
 	return [
 		qr!^(meta|xt|blib|cover_db)/!,
+		qr!^(perl-travis-helper)/!,
 		qr!^\..!,
 		qr!^[Dd]evel.!,
 		qr!~$!,

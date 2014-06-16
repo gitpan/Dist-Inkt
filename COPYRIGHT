@@ -7,6 +7,7 @@ Files: Changes
  META.json
  META.yml
  bin/distinkt-dist
+ bin/distinkt-travisyml
  doap.ttl
  lib/Dist/Inkt/Profile/Simple.pm
  lib/Dist/Inkt/Role/CPANfile.pm
@@ -33,12 +34,6 @@ Files: CONTRIBUTING
 Copyright: Unknown
 License: Unknown
 
-Files: Makefile.PL
- bin/distinkt-travisyml
- dist.ini
-Copyright: Copyright 2013 Toby Inkster.
-License: GPL-1.0+ or Artistic-1.0
-
 Files: COPYRIGHT
  CREDITS
  SIGNATURE
@@ -53,6 +48,11 @@ License: GPL-1.0+ or Artistic-1.0
 Files: examples/p5-acme-example-dist/lib/Acme/Example/Dist.pm
  examples/p5-acme-example-dist/t/01basic.t
 Copyright: This software is copyright (c) 2014 by Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: Makefile.PL
+ dist.ini
+Copyright: Copyright 2013 Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
 Files: t/01basic.t

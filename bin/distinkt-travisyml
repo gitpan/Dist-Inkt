@@ -2,61 +2,57 @@
 
 use strict;
 use warnings;
-use B;
 use Cwd qw(cwd);
-use Data::Dumper;
 use File::chdir;
 use Path::FindDev qw(find_dev);
-use Module::Runtime qw(use_package_optimistically);
-use List::MoreUtils qw(uniq);
 
-local($CWD) = my($root) = find_dev(cwd);
+local($CWD) = find_dev(cwd);
 
-my $ini = $root->child('dist.ini');
-$ini->exists or die("Could not find dist.ini; bailing out");
+my %opts = map {
+	/^--TRAVIS$/     ? (should_sign => 0, should_compress => 0) :
+	/^--(\w+)=(.+)$/ ? ($1 => $2) :
+	die("Unrecognized argument: $_");
+} @ARGV;
 
-my @ini = grep /^;;/, do { my $fh = $ini->openr; <$fh> };
-chomp @ini;
-
-my %config = map {
-	s/(?:^;;\s*)|(?:\s*$)//g;
-	my ($key, $value) = split /\s*=\s*/, $_, 2;
-	$key => scalar(eval($value));
-} @ini;
-
-my $class = delete $config{class}
-	or die("No Dist::Inkt subclass specified in $ini; bailing out");
-
-$config{rootdir} ||= $root;
-
-my $dist = use_package_optimistically($class)->new(%config);
-
-my @prereqs = sort grep { $_ ne 'perl' } uniq(
-	keys(%{ $dist->metadata->{prereqs}{runtime}{requires} || {} }),
-	keys(%{ $dist->metadata->{prereqs}{test}{requires} || {} }),
-	keys(%{ $dist->metadata->{prereqs}{runtime}{recommends} || {} }),
-	keys(%{ $dist->metadata->{prereqs}{test}{recommends} || {} }),
-	keys(%{ $dist->metadata->{prereqs}{test}{suggests} || {} }),
-);
-
-my $perl_ver = $dist->metadata->{prereqs}{runtime}{requires}{perl} || '5.010';
-
-print STDERR "Generating .travis.yml\n";
-
-my $yml = $dist->sourcefile(".travis.yml")->openw;
-
-print {$yml} "language: perl\n";
-print {$yml} "script: HARNESS_IS_VERBOSE=1 prove -Iinc -Ilib t\n";
-print {$yml} "install:\n";
-print {$yml} "  - cpanm ", join(" ", map B::perlstring($_), @prereqs), "\n";
-print {$yml} "perl:\n";
-for my $v (8, 10, 12, 14, 16, 18, 19)
-{
-	my $formatted = sprintf("5.%03d000", $v);
-	if ($formatted ge $perl_ver)
-	{
-		print {$yml} "  - \"5.$v\"\n";
-	}
-}
-
+require Dist::Inkt;
+my $dist = 'Dist::Inkt'->new_from_ini(undef, %opts);
+$dist->BuildTravisYml;
 exit(0);
+
+__END__
+
+=pod
+
+=encoding utf-8
+
+=for stopwords gzipped tarball distinkt-travisyml
+
+=head1 NAME
+
+distinkt-travisyml - build a Travis-CI config file for a Dist::Inkt-based distribution
+
+=head1 SYNOPSIS
+
+   distinkt-travisyml
+
+=head1 DESCRIPTION
+
+After generating the file, you probably want to tweak it by hand.
+
+=head1 AUTHOR
+
+Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
+
+=head1 COPYRIGHT AND LICENCE
+
+This software is copyright (c) 2014 by Toby Inkster.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=head1 DISCLAIMER OF WARRANTIES
+
+THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
