@@ -3,7 +3,7 @@ package Dist::Inkt;
 use 5.010001;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.021';
+our $VERSION   = '0.022';
 
 use Moose;
 use Module::Metadata;
@@ -122,7 +122,7 @@ sub _build_metadata
 	for (qw/ license author /) {
 		$meta->{$_} = [] if @{$meta->{$_}}==1 && $meta->{$_}[0] eq 'unknown';
 	}
-	if ($self->sourcefile('meta/META.PL'))
+	if ($self->sourcefile('meta/META.PL')->exists)
 	{
 		local $_ = $meta;
 		my $filename = $self->sourcefile('meta/META.PL')->absolute->stringify;
