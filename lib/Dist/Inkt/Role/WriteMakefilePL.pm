@@ -1,7 +1,7 @@
 package Dist::Inkt::Role::WriteMakefilePL;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.022';
+our $VERSION   = '0.023';
 
 use Moose::Role;
 use Types::Standard -types;
@@ -77,7 +77,7 @@ after PopulateMetadata => sub {
 	$self->metadata->{prereqs}{configure}{requires}{'File::ShareDir::Install'} = '0.02'
 		if $self->has_shared_files
 		&& !defined $self->metadata->{prereqs}{configure}{requires}{'File::ShareDir::Install'};
-	$self->metadata->{prereqs}{configure}{requires}{'CPAN::Meta::Requirements'} = '2.000'
+	$self->metadata->{prereqs}{configure}{recommends}{'CPAN::Meta::Requirements'} = '2.000'
 		if $self->needs_conflict_check_code;
 	$self->metadata->{dynamic_config} = 1
 		if $self->sourcefile(DYNAMIC_CONFIG_PATH)->exists;
